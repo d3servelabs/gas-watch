@@ -14,9 +14,9 @@
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz"></div>
     <script>
-        const resultKey = "Median Gas";
+        const resultKey = "Min Gas";
         const getValue = (d) => {
-          return  d["Min Gas"];
+          return  d[resultKey];
         }
         // set the dimensions and margins of the graph
         const margin = {top: 80, right: 25, bottom: 30, left: 240},
