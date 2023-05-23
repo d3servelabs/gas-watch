@@ -14,7 +14,10 @@
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz"></div>
     <script>
-
+        const resultKey = "Median Gas";
+        const getValue = (d) => {
+          return  d["Min Gas"];
+        }
         // set the dimensions and margins of the graph
         const margin = {top: 80, right: 25, bottom: 30, left: 240},
           width = 1450 - margin.left - margin.right,
@@ -36,7 +39,7 @@
           
           const myColor = d3.scaleLinear()
             .range(["green", "white" ,"red"]) // Change the range to white to green
-            .domain([d3.min(data, d => d["Min Gas"]), d3.median(data, d => d["Min Gas"]), d3.max(data, d => d["Min Gas"])])
+            .domain([d3.min(data, d => getValue(d)), d3.median(data, d => getValue(d)), d3.max(data, d => getValue(d))])
           
             // Build X scales and axis:
           const x = d3.scaleBand()
@@ -80,7 +83,7 @@
           }
           const mousemove = function(event,d) {
             tooltip
-              .html("The exact value of<br>this cell is: " + d["Min Gas"])
+              .html("The exact value of<br>this cell is: " + getValue(d))
               .style("left", (event.x)/2 + "px")
               .style("top", (event.y)/2 + "px")
           }
@@ -102,7 +105,7 @@
               .attr("ry", 4)
               .attr("width", x.bandwidth() )
               .attr("height", y.bandwidth() )
-              .style("fill", function(d) { return myColor(d["Min Gas"])} )
+              .style("fill", function(d) { return myColor(getValue(d))} )
               .style("stroke-width", 4)
               .style("stroke", "none")
               .style("opacity", 0.8)
@@ -128,7 +131,7 @@
                 .style("font-size", "14px")
                 .style("fill", "grey")
                 .style("max-width", 400)
-                .text("Gas price per by day and hour");
+                .text(resultKey + " price per by day and hour");
         
         
         </script>
