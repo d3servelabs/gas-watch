@@ -1,4 +1,4 @@
-
+<!-- Fron Example of https://d3-graph-gallery.com/graph/heatmap_style.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,21 +98,33 @@
           // add the squares
           svg.selectAll()
             .data(data, function(d) {return d.Day+':'+d.Hour;})
-            .join("rect")
-              .attr("x", function(d) { return x(d.Hour) })
-              .attr("y", function(d) { return y(d.Day) })
-              .attr("rx", 4)
-              .attr("ry", 4)
-              .attr("width", x.bandwidth() )
-              .attr("height", y.bandwidth() )
-              .style("fill", function(d) { return myColor(getValue(d))} )
-              .style("stroke-width", 4)
-              .style("stroke", "none")
-              .style("opacity", 0.8)
-            .on("mouseover", mouseover)
-            .on("mousemove", mousemove)
-            .on("mouseleave", mouseleave)
-        
+            .join("g")
+              .attr("transform", function(d) { return "translate(" + x(d.Hour) + "," + y(d.Day) + ")"; })
+              .append("rect")
+                .attr("rx", 4)
+                .attr("ry", 4)
+                .attr("width", x.bandwidth())
+                .attr("height", y.bandwidth())
+                .style("fill", function(d) { return myColor(getValue(d)); })
+                .style("stroke-width", 4)
+                .style("stroke", "none")
+                .style("opacity", 0.8)
+                .on("mouseover", mouseover)
+                .on("mousemove", mousemove)
+                .on("mouseleave", mouseleave)
+              .select(function() { return this.parentNode; })
+              .append("text")
+                .attr("x", x.bandwidth() / 2)
+                .attr("y", y.bandwidth() / 2)
+                .attr("dy", ".35em")
+                // font size
+                .style("font-size", "0.8em")
+                // bold 
+                .style("font-weight", "bold")
+                .text(d=>getValue(d).toFixed(2))
+                .style("text-anchor", "middle")
+                .style("fill", "black")
+
         });
         
         // Add title to graph
