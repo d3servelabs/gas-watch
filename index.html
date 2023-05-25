@@ -34,7 +34,7 @@
           console.log(jsonRet.result);
           const data = jsonRet.result.rows;
           // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
-          const days = Array.from(new Set(data.map(d => d.Day)));
+          const days = Array.from(new Set(data.map(d => d.Day))).reverse();
           const hours = Array.from(new Set(data.map(d => d.Hour))).sort((a, b) => { return a - b;});
           
           const myColor = d3.scaleLinear()
