@@ -10,7 +10,7 @@
 <body>
     <!-- Load d3.js -->
     <script src="https://d3js.org/d3.v6.js"></script>
-
+    <h1>Ethereum Gas Price by Hour <a href="https://gas.zzn.im">gas.zzn.im</a></h1>
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz"></div>
     <script>
@@ -19,7 +19,7 @@
           return  d[resultKey];
         }
         // set the dimensions and margins of the graph
-        const margin = {top: 80, right: 25, bottom: 30, left: 240},
+        const margin = {top: 80, right: 25, bottom: 30, left: 100},
           width = 1450 - margin.left - margin.right,
           height = 1200 - margin.top - margin.bottom;
         
@@ -133,7 +133,7 @@
                 .attr("y", -50)
                 .attr("text-anchor", "left")
                 .style("font-size", "22px")
-                .text("Ethereum Gas Price");
+                .text("Ethereum Gas Price (gas.zzn.im)");
         
         // Add subtitle to graph
         svg.append("text")
@@ -143,8 +143,7 @@
                 .style("font-size", "14px")
                 .style("fill", "grey")
                 .style("max-width", 400)
-                .text(resultKey + " price per by day and hour");
-        
+                .text(resultKey + " price per by day and hour (in UTC timezone)");
         
         </script>
 </body>
