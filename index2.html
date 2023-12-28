@@ -19,19 +19,19 @@
 <body>
     <!-- Load d3.js -->
     <script src="https://d3js.org/d3.v6.js"></script>
-    <h1>Ethereum Gas Price by Hour <a href="https://gas2.zzn.im">gas.zzn.im</a></h1>
-    <h2><a href="https://dune.com/queries/2715380">Dune</a></h2>
+    <h1>Ethereum Gas Price by Hour 2 <a href="https://gas.zzn.im">gas.zzn.im</a></h1>
+    <h2><a href="https://dune.com/queries/2501963">Dune</a></h2>
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz"></div>
     <script>
-        const resultKey = "Median Gas";
+        const resultKey = "Min Gas";
         const getValue = (d) => {
           return  d[resultKey];
         }
         // set the dimensions and margins of the graph
         const margin = {top: 80, right: 25, bottom: 30, left: 100},
           width = 1450 - margin.left - margin.right,
-          height = 120000 - margin.top - margin.bottom;
+          height = 1200 - margin.top - margin.bottom;
         
         // append the svg object to the body of the page
         const svg = d3.select("#my_dataviz")
@@ -40,7 +40,7 @@
           .attr("height", height + margin.top + margin.bottom)
         .append("g")
           .attr("transform", `translate(${margin.left}, ${margin.top})`);
-        d3.json("https://api.dune.com/api/v1/query/2715380/results?api_key=lITHwkKgsLSyvy4fb22ALYfBmweedLGy").then(function(jsonRet) {
+        d3.json("https://api.dune.com/api/v1/query/2501963/results?api_key=lITHwkKgsLSyvy4fb22ALYfBmweedLGy").then(function(jsonRet) {
           console.log(jsonRet.result);
           const data = jsonRet.result.rows;
           // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
