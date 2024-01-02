@@ -30,7 +30,7 @@
           .attr("height", height + margin.top + margin.bottom)
         .append("g")
           .attr("transform", `translate(${margin.left}, ${margin.top})`);
-        d3.json("https://api.dune.com/api/v1/query/2502479/results?api_key=lITHwkKgsLSyvy4fb22ALYfBmweedLGy").then(function(jsonRet) {
+        d3.json("https://api.dune.com/api/v1/query/2502479/results?api_key=CgkyxYUuM9OfKx0G7Igf0BPm25hJFnWO").then(function(jsonRet) {
           console.log(jsonRet.result);
           const data = jsonRet.result.rows;
           // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'

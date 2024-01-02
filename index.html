@@ -32,9 +32,7 @@
         var margin = {top: 80, right: 25, bottom: 30, left: 100},
           width = 1450 - margin.left - margin.right;
 
-          
-        
-        d3.json("https://api.dune.com/api/v1/query/2501963/results?api_key=lITHwkKgsLSyvy4fb22ALYfBmweedLGy").then(function(jsonRet) {
+        d3.json("https://api.dune.com/api/v1/query/2501963/results?api_key=CgkyxYUuM9OfKx0G7Igf0BPm25hJFnWO").then(function(jsonRet) {
           // console.log(jsonRet.result);
           let data = jsonRet.result.rows ;
           data = [...data, ...data, ...data]
