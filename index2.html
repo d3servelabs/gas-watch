@@ -43,7 +43,7 @@
           const hours = Array.from(new Set(data.map(d => d.Hour))).sort((a, b) => { return a - b;});
 
           // height calculation
-          const height =( Math.floor(data.length / 22) + 1) * 30
+          const height =( Math.floor(data.length / 22) + 1) * 10
 
         // append the svg object to the body of the page
         const svg = d3.select("#my_dataviz")
